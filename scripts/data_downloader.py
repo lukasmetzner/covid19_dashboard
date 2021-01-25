@@ -43,6 +43,6 @@ def transform_dataframe(df: pd.DataFrame, c_type: str, country: str = "Germany")
 
 
 if __name__ == "__main__":
-    transform_dataframe(download_dataframe(_SOURCE_CASES), "cases").to_csv("cases_transformed.csv", index=False)
-    transform_dataframe(download_dataframe(_SOURCE_DEATHS), "deaths").to_csv("deaths_transformed.csv", index=False)
-    transform_dataframe(download_dataframe(_SOURCE_RECOVERED), "recovered").to_csv("recovered_transformed.csv", index=False)
+    transform_dataframe(download_dataframe(_SOURCE_CASES), "cases").to_csv("../cases_transformed.csv", index=False)
+    transform_dataframe(download_dataframe(_SOURCE_DEATHS), "deaths").to_csv("../deaths_transformed.csv", index=False)
+    transform_dataframe(download_dataframe(_SOURCE_RECOVERED), "recovered").to_csv("../recovered_transformed.csv", index=False)
