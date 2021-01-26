@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 ```
 **Download data**
 ```bash
-python3 ./scripts/data_downloader.py <your_country> # Default if not specified => Germany
+python3 ./scripts/data_downloader.py <your_country> # The default is Germany, if not specified
 ```
 **Start streamlit server**
 ```bash
