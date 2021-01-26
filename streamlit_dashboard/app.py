@@ -6,8 +6,8 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px
 
-st.set_page_config(layout="wide")
-st.header("Hopkins Covid-19 Dashboard")
+st.set_page_config(layout="wide", page_title="Covid-19 Dashboard")
+st.header("Covid-19 Dashboard")
 
 
 df_cases = pd.read_csv("../cases_transformed.csv")
