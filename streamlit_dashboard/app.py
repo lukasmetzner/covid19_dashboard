@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-st.write("Hopkins Covid19 Dashboard")
+st.header("Hopkins Covid-19 Dashboard")
 
 
 df_cases = pd.read_csv("../cases_transformed.csv")
