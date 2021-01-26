@@ -2,6 +2,7 @@ import requests
 import io
 import pandas as pd
 from dateutil.parser import parse
+import sys
 
 _SOURCE_CASES = "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_confirmed_global.csv&filename=time_series_covid19_confirmed_global.csv"
 _SOURCE_DEATHS = "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_deaths_global.csv&filename=time_series_covid19_deaths_global.csv"
@@ -43,6 +44,15 @@ def transform_dataframe(df: pd.DataFrame, c_type: str, country: str = "Germany")
 
 
 if __name__ == "__main__":
-    transform_dataframe(download_dataframe(_SOURCE_CASES), "cases").to_csv("../cases_transformed.csv", index=False)
-    transform_dataframe(download_dataframe(_SOURCE_DEATHS), "deaths").to_csv("../deaths_transformed.csv", index=False)
-    transform_dataframe(download_dataframe(_SOURCE_RECOVERED), "recovered").to_csv("../recovered_transformed.csv", index=False)
+    country = "Germany"
+    if len(sys.argv) > 1:
+        country = sys.argv[1]
+    print("Downloading cases dataframe!")
+    transform_dataframe(download_dataframe(_SOURCE_CASES), "cases", country=country).to_csv("../cases_transformed.csv", index=False)
+    print("Finished!")
+    print("Downloading deaths dataframe!")
+    transform_dataframe(download_dataframe(_SOURCE_DEATHS), "deaths", country=country).to_csv("../deaths_transformed.csv", index=False)
+    print("Finished!")
+    print("Downloading recovered dataframe!")
+    transform_dataframe(download_dataframe(_SOURCE_RECOVERED), "recovered", country=country).to_csv("../recovered_transformed.csv", index=False)
+    print("Finished!")
